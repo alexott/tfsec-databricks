@@ -34,7 +34,7 @@ checks:
     subMatch:
       name: virtual_network_id
       action: isPresent
-  errorMessage: "The required custom_parameters.no_public_ip isn't true"
+  errorMessage: "No VNet configuration is provided in custom_parameters.virtual_network_id"
   relatedLinks:
   - https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
 - code: ADB_PREMIUM_SKU
