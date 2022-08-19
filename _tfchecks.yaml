@@ -37,3 +37,20 @@ checks:
   errorMessage: "The required custom_parameters.no_public_ip isn't true"
   relatedLinks:
   - https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
+- code: ADB_PREMIUM_SKU
+  description: "Azure Databricks: Premium SKU"
+  impact: "By deploying Azure Databricks with premium SKU you get additional features, like, DBSQL, enterprise security, ..."
+  resolution: "Specify 'premium' as value for sku parameter"
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - azurerm_databricks_workspace
+  severity: WARNING
+  matchSpec:
+    name: sku
+    action: equals
+    value: "premium"
+  errorMessage: "The sku parameter isn't equal to premium"
+  relatedLinks:
+  - https://azure.microsoft.com/en-us/pricing/details/databricks/
+
