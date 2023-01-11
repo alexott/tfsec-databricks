@@ -5,7 +5,7 @@ This repository has a number of the checks for Databricks-related resources:
 
 
 
-## Feature work
+## Future work
 
 ### check that we have AWS VPC endpoints for s3, sts, kinesis-streams
 
