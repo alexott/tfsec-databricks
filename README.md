@@ -1,7 +1,8 @@
 # tfsec custom checks for Databricks-related resources
 
-This repository has a number of the checks for Databricks-related resources:
-- [Azure Databricks resource](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) in the `azurerm` provider
+This repository has a number of the [tfsec](https://github.com/aquasecurity/tfsec) checks for Databricks-related resources:
+- [Azure Databricks resource](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) in the `azurerm` provider.
+- Different resources of [Databricks Terraform provider](https://registry.terraform.io/providers/databricks/databricks/latest/docs).
 
 
 

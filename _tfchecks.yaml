@@ -53,4 +53,28 @@ checks:
   errorMessage: "The sku parameter isn't equal to premium"
   relatedLinks:
   - https://azure.microsoft.com/en-us/pricing/details/databricks/
+- code: DB_CLUSTER_HIGH_AUTOTERMINATION_TIME
+  description: "Databricks cluster: High or zero auto termination time"
+  impact: "Increased spending due disabled or very high auto termination time"
+  resolution: "Set 'autotermination_minutes' > 0 && <= 120"
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - databricks_cluster
+  severity: WARNING
+  matchSpec:
+    action: isPresent
+    name: autotermination_minutes
+    subMatch : 
+      action : and
+      predicateMatchSpec :
+        - action: greaterThan
+          name  : autotermination_minutes
+          value : 0
+        - action: lessThanOrEqualTo
+          name  : autotermination_minutes
+          value : 120
+  errorMessage: "High or zero auto termination time"
+  relatedLinks:
+  - https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination
 
