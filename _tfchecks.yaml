@@ -74,7 +74,32 @@ checks:
         - action: lessThanOrEqualTo
           name  : autotermination_minutes
           value : 120
-  errorMessage: "High or zero auto termination time"
+  errorMessage: "High or zero cluster auto termination time"
   relatedLinks:
   - https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination
+- code: DB_SQL_WAREHOUSE_HIGH_AUTOTERMINATION_TIME
+  description: "Databricks warehouse: High or zero auto termination time"
+  impact: "Increased spending due disabled or very high auto termination time"
+  resolution: "Set 'auto_stop_mins' > 0 && <= 45"
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - databricks_sql_endpoint
+  severity: WARNING
+  matchSpec:
+    action: isPresent
+    name: auto_stop_mins
+    subMatch : 
+      action : and
+      predicateMatchSpec :
+        - action: greaterThan
+          name  : auto_stop_mins
+          value : 0
+        - action: lessThanOrEqualTo
+          name  : auto_stop_mins
+          value : 45
+  errorMessage: "High or zero auto SQL warehouse termination time"
+  relatedLinks:
+  - https://docs.databricks.com/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse
+
 
