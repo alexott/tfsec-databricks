@@ -101,5 +101,25 @@ checks:
   errorMessage: "High or zero auto SQL warehouse termination time"
   relatedLinks:
   - https://docs.databricks.com/sql/admin/create-sql-warehouse.html#create-a-sql-warehouse
-
-
+- code: JOBS_ON_INTERACTIVE_CLUSTER
+  description: "Databricks Job: Using interactive clusters"
+  impact: "Increased spending due use of interactive clusters"
+  resolution: "Use job clusters"
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - databricks_job
+  severity: WARNING
+  matchSpec:
+    action : and
+    predicateMatchSpec :
+      - action: notPresent
+        name  : existing_cluster_id
+      - action: isPresent
+        name  : task
+        subMatch : 
+          action: notPresent
+          name  : existing_cluster_id
+  errorMessage: "Use of interactive clusters to execute Databricks jobs"
+  relatedLinks:
+  - https://docs.databricks.com/workflows/jobs/use-compute.html
