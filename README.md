@@ -1,9 +1,28 @@
 # tfsec custom checks for Databricks-related resources
 
-This repository has a number of the [tfsec](https://github.com/aquasecurity/tfsec) checks for Databricks-related resources:
+This repository has a number of the [tfsec](https://github.com/aquasecurity/tfsec) checks (security, costs tracking & optimization, ...) for Databricks-related resources:
 - [Azure Databricks resource](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) in the `azurerm` provider.
-- Different resources of [Databricks Terraform provider](https://registry.terraform.io/providers/databricks/databricks/latest/docs).
+- Different resources of [Databricks Terraform provider](https://registry.terraform.io/providers/databricks/databricks/latest/docs) - clusters, SQL warehouses, jobs, ...
 
+
+## Usage
+
+1. Install `tfsec` as described in the [documentation](https://aquasecurity.github.io/tfsec/latest/guides/installation/). 
+1. Clone this repository.
+1. Switch to the folder with your Terraform code & execute following command:
+
+```sh
+tfsec --custom-check-dir "<tfsec-databricks-directory>" .
+```
+
+You can always see `tfsec-databricks` in action by running it on the provided examples:
+
+1. Switch into `examples` directory of the cloned repository.
+1. Run following command:
+
+```sh
+tfsec --custom-check-dir $(pwd)/.. .
+```
 
 
 ## Future work
