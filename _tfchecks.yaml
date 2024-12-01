@@ -37,6 +37,21 @@ checks:
   errorMessage: "No VNet configuration is provided in custom_parameters.virtual_network_id"
   relatedLinks:
   - https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
+- code: MWS_WORKSPACE_BYOVPC
+  description: "AWS/GCP Databricks: Customer-managed VPC"
+  impact: "By deploying AWS or GCP Databricks in VPC managed by you you get more flexibility in deploying networking resources"
+  resolution: "Specify databricks_mws_networks ID in network_id"
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - databricks_mws_workspaces
+  severity: WARNING
+  matchSpec:
+    name: network_id
+    action: isPresent
+  errorMessage: "No VPC configuration is provided in network_id"
+  relatedLinks:
+  - https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_workspaces
 - code: ADB_PREMIUM_SKU
   description: "Azure Databricks: Premium SKU"
   impact: "By deploying Azure Databricks with premium SKU you get additional features, like, DBSQL, enterprise security, ..."
